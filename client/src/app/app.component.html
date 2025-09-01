@@ -1,0 +1,34 @@
+<div class="container">
+  <h1 class="title">{{title}}</h1>
+
+  <form class="search-form" (ngSubmit)="search()">
+    <input
+      type="search"
+      class="search-input"
+      placeholder="Search title or author…"
+      name="q"
+      [(ngModel)]="query">
+    <button type="submit" class="search-button">Search</button>
+  </form>
+
+  <div *ngIf="loading" class="loading">Loading…</div>
+  <div *ngIf="error" class="error">{{error}}</div>
+
+  <ul class="story-list">
+    <li *ngFor="let s of stories" class="story-item">
+      <a *ngIf="s.url; else noLink" [href]="s.url" target="_blank" rel="noopener noreferrer">
+        {{ s.title }}
+      </a>
+      <ng-template #noLink>
+        <span>{{ s.title }}</span>
+      </ng-template>
+      <span class="story-meta"> — by {{s.by}} • {{ s.time | date:'short' }}</span>
+    </li>
+  </ul>
+
+  <div class="pager">
+    <button (click)="prevPage()" [disabled]="page<=1" class="pager-button">Prev</button>
+    <span class="pager-info">Page {{page}} of {{totalPages}} ({{total}} results)</span>
+    <button (click)="nextPage()" [disabled]="page>=totalPages" class="pager-button">Next</button>
+  </div>
+</div>

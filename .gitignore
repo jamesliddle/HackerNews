@@ -1,0 +1,24 @@
+# Node / Angular
+node_modules/
+dist/
+.angular/
+.claude/
+.cursor/
+.gemini/
+.github/
+.junie/
+.vs/
+.windsurf/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# .NET
+bin/
+obj/
+
+# OS
+.DS_Store
+Thumbs.db
